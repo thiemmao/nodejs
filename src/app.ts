@@ -1,4 +1,5 @@
 require('dotenv').config()
+import getconnection from './config/database'
 import wedRouter from './routes/wed'
 const express = require('express')
 const app = express()
@@ -17,7 +18,7 @@ app.use(express.static('public'))
 //middleware
 
 wedRouter(app);
-
+getconnection();
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
