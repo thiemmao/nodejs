@@ -9,11 +9,37 @@
 
 </head>
 <body>
-    <h1>Home</h1>
-    <p>Welcome to the home page!</p>
-    <p>Current date and time: <%= new Date().toLocaleString() %></p>
-    <!-- <img src="/images/baba.png" alt="Sample Image" style="width: 300px; height: auto;"> -->
-     <a href=""> create user </a>
-    <button class="btn btn-primary" onclick="window.location.href='/create-user'">Create User</button>
+    <div style="margin: 25;">
+    <div style="display: flex; justify-content: space-between;align-items: center;">   
+        <h1>list name : <%= JSON.stringify( name) %></h1>
+        <!-- <p>Welcome to the home page!</p> -->
+        <!-- <p>Current date and time: <%= new Date().toLocaleString() %></p> -->
+        <!-- <img src="/images/baba.png" alt="Sample Image" style="width: 300px; height: auto;"> -->
+        <a href=""> create user </a>
+        <button class="btn btn-primary" onclick="window.location.href='/create-user'">Create User</button>
+    </div>
+    <hr/>
+    <div>
+        <table style="width:100%" class =" table table-hover table-striped table-bordered">
+            <thead>
+              <th>id</th>
+              <th>name</th>
+              <th>email</th>
+              <th>address</th>
+              <th>action</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Alfreds Futterkiste</td>
+                <td><button class="btn btn-primary" ">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>          
+    </div>
+    </div>
+
 </body>
 </html>
