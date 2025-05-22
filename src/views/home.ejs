@@ -11,11 +11,13 @@
 <body>
     <div style="margin: 25;">
     <div style="display: flex; justify-content: space-between;align-items: center;">   
-        <h1>list name : <%= JSON.stringify( name) %></h1>
+        <h1>list name : 
+          <!-- <%= JSON.stringify( name) %> -->
+        </h1>
         <!-- <p>Welcome to the home page!</p> -->
         <!-- <p>Current date and time: <%= new Date().toLocaleString() %></p> -->
         <!-- <img src="/images/baba.png" alt="Sample Image" style="width: 300px; height: auto;"> -->
-        <a href=""> create user </a>
+        <!-- <a href=""> create user </a> -->
         <button class="btn btn-primary" onclick="window.location.href='/create-user'">Create User</button>
     </div>
     <hr/>
@@ -29,13 +31,26 @@
               <th>action</th>
             </thead>
             <tbody>
+              <% for (let i = 0; i < name.length; i++) { %>
               <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>Alfreds Futterkiste</td>
-                <td><button class="btn btn-primary" ">Delete</button></td>
+                <td><%= name[i].id %></td>
+                <td><%= name[i].name %></td>
+                <td><%= name[i].email %></td>
+                <td><%= name[i].addresses %></td>
+                <td>
+                  <div style="display: flex; gap: 10px;">
+                    <form action ="/handle-view-user/<%= name[i].id %>" method="get">
+                    <input type="hidden" name="id" value="<%= name[i].id %>">
+                    <button type="submit" class="btn btn-warning">View</button>
+                  </form>
+                  <form action ="/handle-delete-user/<%= name[i].id %>" method="POST">
+                    <input type="hidden" name="id" value="<%= name[i].id %>">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+                </td>  
               </tr>
+              <% } %>
             </tbody>
           </table>          
     </div>
