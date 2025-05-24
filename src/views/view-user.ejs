@@ -10,28 +10,28 @@
 </head>
 <body>
     <div style="width: 600;margin:auto" >
-    <h1 style="padding: 10px 0">view details User ID = <%= user[0].id %></h1>
+    <h1 style="padding: 10px 0">view details User ID = <%= String(user.id) %></h1>
     <form action ="/Update-user" method="post">
-      <input name="id" type="hidden" value="<%= user[0].id %>">
+      <input name="id" type="hidden" value="<%= String(user.id) %>"> 
       <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Email address</label>
           <input 
           name="email"
-          value="<%= user[0].email %>"
+          value="<%= user.email %>"
           type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
           <textarea 
           name="description"
-          class="form-control" id="exampleFormControlTextarea1" rows="3"><%= user[0].name %></textarea>
+          class="form-control" id="exampleFormControlTextarea1" rows="3"><%= user.name %></textarea>
         
         </div>
         <div class="mb-3">
           <class="form-label">Address:</class=>
           <textarea
           name="address"
-          class="form-control" rows="2"><%= user[0].addresses %></textarea>
+          class="form-control" rows="2"><%= user.addresses %></textarea>
           
         </div>
         <div class="mb-3">
