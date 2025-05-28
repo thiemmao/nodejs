@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div style="margin: 25;">
+    <div style="display: flex; justify-content: space-between;align-items: center;">   
+        <h1>list name : 
+          <!-- <%= JSON.stringify( name) %> -->
+        </h1>
+        <!-- <p>Welcome to the home page!</p> -->
+        <!-- <p>Current date and time: <%= new Date().toLocaleString() %></p> -->
+        <!-- <img src="/images/baba.png" alt="Sample Image" style="width: 300px; height: auto;"> -->
+        <!-- <a href=""> create user </a> -->
+        <button class="btn btn-primary" onclick="window.location.href='/create-user'">Create User</button>
+    </div>
+    <hr/>
+    <div>
+        <table style="width:100%" class =" table table-hover table-striped table-bordered">
+            <thead>
+              <th>id</th>
+              <th>name</th>
+              <th>email</th>
+              <th>address</th>
+              <th>action</th>
+            </thead>
+            <tbody>
+              <% for (let i = 0; i < name.length; i++) { %>
+              <tr>
+                <td><%= name[i].id %></td>
+                <td><%= name[i].name %></td>
+                <td><%= name[i].email %></td>
+                <td><%= name[i].addresses %></td>
+                <td>
+                  <div style="display: flex; gap: 10px;">
+                    <form action ="/handle-view-user/<%= name[i].id %>" method="get">
+                    <input type="hidden" name="id" value="<%= name[i].id %>">
+                    <button type="submit" class="btn btn-warning">View</button>
+                  </form>
+                  <form action ="/handle-delete-user/<%= name[i].id %>" method="POST">
+                    <input type="hidden" name="id" value="<%= name[i].id %>">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+                </td>  
+              </tr>
+              <% } %>
+            </tbody>
+          </table>          
+    </div>
+    </div>
+
+</body>
+</html>
